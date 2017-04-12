@@ -6,5 +6,5 @@ $route = new Route();
 $route->loadRoutes('map.json');
 
 echo '<pre>';
-print_r($route->adj);
+print_r($route->convertVertices($route->adj, 'num'));
 echo '</pre>';
