@@ -3,7 +3,7 @@
 require 'app.php';
 
 $route = new Route();
-$route->loadRoutes('routes.json');
+$route->loadRoutes('map.json');
 
 echo '<pre>';
 print_r($route->adj);
