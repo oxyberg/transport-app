@@ -1,18 +1,17 @@
 <?php
 
-class Route
+class Map
 {
 
-    public $adj = [];
+    private $adj = [], $countries = [], $transportPaths = [];
 
-    public $countries = [];
-
-    public function loadRoutes($filename)
+    public function __construct($filename)
     {
         $file = file_get_contents($filename);
         $data = json_decode($file, true);
         $this->adj = $data['adjadency'];
         $this->countries = $data['countries'];
+        $this->transportPaths = $data['transport'];
     }
 
     public function buildRoute($a, $b)
@@ -52,6 +51,20 @@ class Route
         $path[] = $s;
         $path = array_reverse($path);
         return $path;
+    }
+
+    public function assignTransport($path, $cheap = true)
+    {
+        $assignees = [];
+        for ($i = 0; $i < count($path) - 1; $i++)
+        {
+            $assignees = $this->findVehicle($path[$i], $path[$i + 1], $cheap);
+        }
+    }
+
+    private function findVehicle($a, $b, $cheap)
+    {
+
     }
 
     public function convertVertices($array, $to)

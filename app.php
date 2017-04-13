@@ -12,3 +12,6 @@ if (debug)
 spl_autoload_register(function ($class) {
     include 'lib/' . $class . '.php';
 });
+
+// load available routes, countries and transport paths
+$map = new Map('map.json');

@@ -2,9 +2,6 @@
 
 require 'app.php';
 
-$route = new Route();
-$route->loadRoutes('map.json');
-
 echo '<pre>';
-print_r($route->buildRoute('b', 'g'));
+print_r($map->buildRoute('b', 'g'));
 echo '</pre>';

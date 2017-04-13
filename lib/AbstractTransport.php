@@ -3,12 +3,13 @@
 abstract class AbstractTransport
 {
 
-    private $capacity;
-    private $ticketPrice;
+    private
+        $capacity, // how many people vehicle can transport
+        $distance, // path's distance
+        $moneyPerDistance, // coefficient for price
+        $isInternational; // flag for type
 
-    public function toMove() {}
-
-    public function toPayForTicket() {}
+    public function payForTicket() {}
 
     public function getCapacity()
     {
@@ -20,14 +21,24 @@ abstract class AbstractTransport
         $this->capacity = $value;
     }
 
-    public function getTicketPrice()
+    public function getMoneyPerDistance()
     {
-        return $this->ticketPrice;
+        return $this->moneyPerDistance;
     }
 
-    public function setTicketPrice($value)
+    public function setMoneyPerDistance($value)
     {
-        $this->ticketPrice = $value;
+        $this->moneyPerDistance = $value;
+    }
+
+    public function getIsInternational()
+    {
+        return $this->isInternational;
+    }
+
+    public function setIsInternational(bool $value)
+    {
+        $this->isInternational = $value;
     }
 
 }
