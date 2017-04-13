@@ -15,4 +15,13 @@ class Bus extends MotorTransport
         $this->park = $value;
     }
 
+    public function payForTicket()
+    {
+        $distance = $this->getDistance();
+        $priceD = $distance * 1.5;
+        $priceI = 0;
+        if ($this->isInternational()) $priceI = $distance / 2;
+        return $priceD + $priceI;
+    }
+
 }

@@ -15,4 +15,13 @@ class Plane extends AirTransport
         $this->numberOfMotors = $value;
     }
 
+    public function payForTicket()
+    {
+        $distance = $this->getDistance();
+        $priceD = $distance * 6;
+        $priceI = 0;
+        if ($this->isInternational()) $priceI = $distance / 2;
+        return $priceD + $priceI;
+    }
+
 }

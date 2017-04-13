@@ -5,8 +5,6 @@ abstract class AbstractTransport
 
     private
         $capacity, // how many people vehicle can transport
-        $distance, // path's distance
-        $moneyPerDistance, // coefficient for price
         $x, $y; // start and end points
 
     public function payForTicket() {}
@@ -31,9 +29,27 @@ abstract class AbstractTransport
         $this->moneyPerDistance = $value;
     }
 
+    // check if path is international
     public function isInternational()
     {
-        // make check for international by x and y
+        $startCountry = '';
+        $finishCountry = '';
+        foreach (Map::getCountries() as $country => $cities)
+        {
+            if (in_array($this->x, $cities)) $startCountry = $country;
+            if (in_array($this->y, $cities)) $finishCountry = $country;
+        }
+        if ($startCountry != $finishCountry) return true;
+        else return false;
+    }
+
+    public function getDistance()
+    {
+        $paths = Map::getAdj()[$this->x];
+        foreach ($paths as $path)
+        {
+            if ($path[0] == $this->y) return $path[1];
+        }
     }
 
     public function setPath($x, $y)

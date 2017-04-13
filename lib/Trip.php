@@ -51,7 +51,41 @@ class Trip extends Graph
         }
     }
 
+    // find proper vehicle for pair of cities
     public function findVehicle($x, $y, $cheap = true)
+    {
+        $available = $this->searchVehicles($x, $y);
+        if (count($available) == 1) return $available[0];
+        else if ($cheap)
+        {
+            $min = $available[0];
+            $minCost = $available[0]->payForTicket();
+            foreach ($available as $vehicle) {
+                if ($vehicle->payForTicket() < $minCost)
+                {
+                    $min = $vehicle;
+                    $minCost = $vehicle->payForTicket();
+                }
+            }
+            return $min;
+        }
+        else if ( ! $cheap)
+        {
+            $max = $available[0];
+            $maxCost = $available[0]->payForTicket();
+            foreach ($available as $vehicle) {
+                if ($vehicle->payForTicket() > $maxCost)
+                {
+                    $max = $vehicle;
+                    $maxCost = $vehicle->payForTicket();
+                }
+            }
+            return $max;
+        }
+    }
+
+    // find all the available vehicles for pair of cities
+    public function searchVehicles($x, $y)
     {
         $available = [];
         foreach (Map::getTransportPaths() as $vehicle => $paths)

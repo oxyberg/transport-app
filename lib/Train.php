@@ -3,16 +3,13 @@
 class Train extends RailTransport
 {
 
-    private $travelPath;
-
-    public function getTravelPath()
+    public function payForTicket()
     {
-        return $this->travelPath;
-    }
-
-    public function setTravelPath($value)
-    {
-        $this->travelPath = $value;
+        $distance = $this->getDistance();
+        $priceD = $distance * 2;
+        $priceI = 0;
+        if ($this->isInternational()) $priceI = $distance / 2;
+        return $priceD + $priceI;
     }
 
 }
