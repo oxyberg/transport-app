@@ -14,4 +14,4 @@ spl_autoload_register(function ($class) {
 });
 
 // load available routes, countries and transport paths
-$map = new Map('map.json');
+Map::load('map.json');

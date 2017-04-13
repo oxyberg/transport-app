@@ -2,6 +2,8 @@
 
 require 'app.php';
 
+$trip = new Trip();
+
 echo '<pre>';
-print_r($map->buildRoute('b', 'g'));
+print_r($trip->findVehicle('a', 'b'));
 echo '</pre>';

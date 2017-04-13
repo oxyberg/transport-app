@@ -3,16 +3,16 @@
 class Bus extends MotorTransport
 {
 
-    private $path;
+    private $park;
 
-    public function getPath()
+    public function getPark()
     {
-        return $this->path;
+        return $this->park;
     }
 
-    public function setPath($value)
+    public function setPark($value)
     {
-        $this->path = $value;
+        $this->park = $value;
     }
 
 }

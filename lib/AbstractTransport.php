@@ -7,7 +7,7 @@ abstract class AbstractTransport
         $capacity, // how many people vehicle can transport
         $distance, // path's distance
         $moneyPerDistance, // coefficient for price
-        $isInternational; // flag for type
+        $x, $y; // start and end points
 
     public function payForTicket() {}
 
@@ -31,14 +31,20 @@ abstract class AbstractTransport
         $this->moneyPerDistance = $value;
     }
 
-    public function getIsInternational()
+    public function isInternational()
     {
-        return $this->isInternational;
+        // make check for international by x and y
     }
 
-    public function setIsInternational(bool $value)
+    public function setPath($x, $y)
     {
-        $this->isInternational = $value;
+        $this->x = $x;
+        $this->y = $y;
+    }
+
+    public function getPath()
+    {
+        return [$this->x, $this->y];
     }
 
 }
