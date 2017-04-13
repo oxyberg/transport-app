@@ -15,5 +15,8 @@
         "Russian Federation": ["a", "b", "c", "d"],
         "United Kinngdom": ["e", "f", "g", "h"],
         "China": ["i", "j"]
+    },
+    "transport": {
+        "Plane": [["a, b"], ["b", "a"]]
     }
 }
