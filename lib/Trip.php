@@ -3,6 +3,8 @@
 class Trip extends Graph
 {
 
+    private $listOfTransport = [];
+
     public function buildRoute($a, $b)
     {
         define('INFINITY', 1000000000);
@@ -44,11 +46,17 @@ class Trip extends Graph
 
     public function assignTransport($path, $cheap = true)
     {
+        $symPath = [];
+        foreach ($path as $city) $symPath[] = chr($city + 97);
+
         $assignees = [];
-        for ($i = 0; $i < count($path) - 1; $i++)
+        for ($i = 0; $i < count($symPath) - 1; $i++)
         {
-            $assignees = $this->findVehicle($path[$i], $path[$i + 1], $cheap);
+            $assignees[] = $this->findVehicle($symPath[$i], $symPath[$i + 1], $cheap);
         }
+
+        $this->listOfTransport = $assignees;
+        return $assignees;
     }
 
     // find proper vehicle for pair of cities
@@ -100,6 +108,20 @@ class Trip extends Graph
             }
         }
         return $available;
+    }
+
+    public function calcTotal()
+    {
+        $sum = 0;
+        foreach ($this->listOfTransport as $vehicle) {
+            $sum = $sum + $vehicle->payForTicket();
+        }
+        return $sum;
+    }
+
+    public function getListOfTransport()
+    {
+        return $this->listOfTransport;
     }
 
 }

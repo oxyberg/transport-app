@@ -3,7 +3,9 @@
 require 'app.php';
 
 $trip = new Trip();
-$available = $trip->findVehicle('a', 'j');
+$path = $trip->buildRoute('a', 'g');
+$vehicles = $trip->assignTransport($path, true);
+
 echo '<pre>';
-print_r($available);
+print_r($vehicles);
 echo '</pre>';
