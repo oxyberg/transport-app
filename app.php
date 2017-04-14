@@ -19,3 +19,22 @@ Autoload::register();
 
 // load available routes, countries and transport paths
 Map::load('map.json');
+
+$snatch = new Snatch;
+
+// routes
+$snatch->get('/', function()
+{
+    $cities = Map::getAdj();
+	require ROOT . '/views/welcome.php';
+});
+$snatch->post('/', function()
+{
+    $cities = Map::getAdj();
+    $data = $_POST;
+	require ROOT . '/views/result.php';
+});
+$snatch->missing(function()
+{
+	echo '404 error!';
+});
