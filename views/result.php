@@ -2,6 +2,10 @@
 <head>
     <title>Traced route</title>
     <meta charset="utf-8">
+    <style>
+    td {padding: 6px 15px;}
+    .data {font-size: 24px;}
+    </style>
 </head>
 <body>
     <h2>Your route's params</h2>
@@ -15,9 +19,9 @@
             </select>
             To:
             <select name="y">
-                <?php foreach ($cities as $city => $pairs): ?>
+                <? foreach ($cities as $city => $pairs): ?>
                 <option value="<? echo $city; ?>" <? if ($data['y'] == $city) echo ' selected'; ?>><? echo $city; ?></option>
-                <?php endforeach; ?>
+                <? endforeach; ?>
             </select>
         </p>
         <p>
@@ -26,13 +30,24 @@
         </p>
         <p><input type="submit" value="Retrace route"></p>
     </form>
-    <pre>
-        <?php
-        $trip = new Trip;
-        $route = $trip->buildRoute($data['x'], $data['y']);
-        $transport = $trip->assignTransport($route);
-        print_r($transport);
-        ?>
-    </pre>
+    <h3>Total price: <? echo $trip->calcTotal(); ?></h3>
+    <table>
+        <tr>
+            <td>Cities</td>
+            <td>Vehicle</td>
+            <td>Distance</td>
+            <td>Is international?</td>
+            <td>Ticket Price</td>
+        </tr>
+        <? foreach ($trip->getListOfTransport() as $vehicle): ?>
+        <tr class="data">
+            <td><? echo $vehicle->getPath()[0]; ?> &rarr; <? echo $vehicle->getPath()[1]; ?></td>
+            <td><? echo get_class($vehicle); ?></td>
+            <td><? echo $vehicle->getDistance(); ?></td>
+            <td><? if ($vehicle->isInternational()) echo 'Yes'; else echo 'No'; ?></td>
+            <td><? echo $vehicle->payForTicket(); ?></td>
+        </tr>
+        <? endforeach; ?>
+    </table>
 </body>
 </html>

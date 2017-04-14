@@ -32,6 +32,10 @@ $snatch->post('/', function()
 {
     $cities = Map::getAdj();
     $data = $_POST;
+    $trip = new Trip;
+    $route = $trip->buildRoute($data['x'], $data['y']);
+    $cheap = ($data['type'] == 'cheap' ? true : false);
+    $transport = $trip->assignTransport($route, $cheap);
 	require ROOT . '/views/result.php';
 });
 $snatch->missing(function()
