@@ -1,19 +1,20 @@
 <html>
 <head>
-    <title>transport.app</title>
+    <title>Build your route</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="views/style.css">
 </head>
 <body>
-    <h2>Build your route</h2>
+    <h1>Build your route</h1>
     <form method="post" action="">
         <p>
-            From:
+            From
             <select name="x">
                 <?php foreach ($cities as $city => $pairs): ?>
                 <option value="<? echo $city; ?>"><? echo $city; ?></option>
                 <?php endforeach; ?>
             </select>
-            To:
+            to
             <select name="y">
                 <?php foreach ($cities as $city => $pairs): ?>
                 <option value="<? echo $city; ?>"><? echo $city; ?></option>

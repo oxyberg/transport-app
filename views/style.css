@@ -1,0 +1,30 @@
+html, body {
+    font-family: Arial, sans-serif;
+    padding: 50px;
+}
+
+table {
+    margin-top: 30px;
+    margin-left: -15px;
+    border-spacing: 0;
+}
+
+td {
+    font-size: 16px;
+    padding: 8px 15px;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.head td {
+    color: rgba(0,0,0,.5);
+}
+
+td.sum {
+    text-align: right;
+}
+
+.total td {
+    font-style: italic;
+    border: none;
+}

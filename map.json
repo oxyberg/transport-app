@@ -14,7 +14,7 @@
     "countries": {
         "Russian Federation": ["a", "b", "c", "d"],
         "United Kinngdom": ["e", "f", "g", "h"],
-        "China": ["i", "j"]
+        "Kazakhstan": ["i", "j"]
     },
     "transport": {
         "Plane": [["a, b"], ["b", "c"], ["c", "i"], ["d", "e"], ["d", "h"], ["g", "j"], ["a", "j"], ["b", "j"]],
