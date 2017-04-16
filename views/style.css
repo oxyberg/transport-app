@@ -3,6 +3,13 @@ html, body {
     padding: 50px;
 }
 
+* {outline: none;}
+
+div {
+    margin: 0 auto;
+    width: 500px;
+}
+
 table {
     margin-top: 30px;
     margin-left: -15px;
@@ -18,6 +25,10 @@ td {
 
 .head td {
     color: rgba(0,0,0,.5);
+}
+
+tr.data:hover {
+    background-color: rgba(0,0,0,.03);
 }
 
 td.sum {
