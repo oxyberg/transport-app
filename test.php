@@ -2,7 +2,8 @@
 
 require 'app.php';
 
-$x = 'a'; $y = 'g';
+$x = array_rand(Map::getAdj());
+$y = array_rand(Map::getAdj());
 $cheap = true;
 
 $trip = new Trip();
