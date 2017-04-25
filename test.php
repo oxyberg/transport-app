@@ -4,6 +4,8 @@ require 'app.php';
 
 $x = array_rand(Map::getAdj());
 $y = array_rand(Map::getAdj());
+if ($y == $x) $y = array_rand(Map::getAdj());
+
 $cheap = true;
 
 $trip = new Trip();
